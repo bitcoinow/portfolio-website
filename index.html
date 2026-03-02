@@ -67,40 +67,8 @@
         <section id="projects" class="projects section-padding dark-section">
             <div class="container">
                 <h2 class="section-title center">Featured Work</h2>
-                <div class="project-grid">
-                    <!-- Project 1 -->
-                    <div class="project-card">
-                        <div class="project-image mock-image-1">
-                            <span class="status-badge finished">Finished Product</span>
-                        </div>
-                        <div class="project-info">
-                            <h3>AI Health Companion</h3>
-                            <p>An intelligent platform providing real-time personalized health insights.</p>
-                            <a href="#" class="read-more">Read Case Study <span>→</span></a>
-                        </div>
-                    </div>
-                    <!-- Project 2 -->
-                    <div class="project-card">
-                        <div class="project-image mock-image-2">
-                            <span class="status-badge concept">Concept</span>
-                        </div>
-                        <div class="project-info">
-                            <h3>NextGen Fintech Dashboard</h3>
-                            <p>A unified analytics interface for high-frequency trading portfolios.</p>
-                            <a href="#" class="read-more">View Prototype <span>→</span></a>
-                        </div>
-                    </div>
-                    <!-- Project 3 -->
-                    <div class="project-card">
-                        <div class="project-image mock-image-3">
-                            <span class="status-badge finished">Finished Product</span>
-                        </div>
-                        <div class="project-info">
-                            <h3>Sustainable Logistics API</h3>
-                            <p>Optimizing routing for low-emission supply chain management.</p>
-                            <a href="#" class="read-more">Read Case Study <span>→</span></a>
-                        </div>
-                    </div>
+                <div id="dynamic-project-grid" class="project-grid">
+                    <p style="text-align: center; width: 100%; grid-column: 1 / -1;">Loading projects...</p>
                 </div>
             </div>
         </section>
@@ -170,7 +138,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 
 </html>

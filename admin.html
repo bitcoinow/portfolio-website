@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Prince Aig</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .admin-container {
+            max-width: 800px;
+            margin: 100px auto;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-container {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme='dark'] .form-container {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .item-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .item-list li {
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.05);
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        [data-theme='dark'] .item-list li {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .item-content h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .item-content p {
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .delete-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="navbar" class="scrolled">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Prince Aig</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Back to Site</a></li>
+                <li><a href="#" id="theme-toggle">☀️/🌙</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container admin-container">
+
+            <!-- Login Section -->
+            <div id="login-section">
+                <h2 class="section-title center">Admin Login</h2>
+                <form id="login-form" class="contact-form">
+                    <div class="input-group">
+                        <input type="email" id="login-email" placeholder="Email Address" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="login-password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary submit-btn">Log In</button>
+                    <p id="login-error" style="color: #ef4444; text-align: center; margin-top: 1rem; display: none;">
+                    </p>
+                </form>
+            </div>
+
+            <!-- Dashboard Section -->
+            <div id="dashboard-section" class="hidden">
+                <div class="admin-header">
+                    <h2>Admin Dashboard</h2>
+                    <button id="logout-btn" class="btn btn-secondary">Log Out</button>
+                </div>
+
+                <!-- Add Project Form -->
+                <div class="form-container">
+                    <h3>Add New Project</h3>
+                    <form id="add-project-form" class="contact-form">
+                        <div class="input-group">
+                            <input type="text" id="proj-title" placeholder="Project Title" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="proj-desc" placeholder="Short Description" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="proj-css-class"
+                                placeholder="CSS Class for Background (e.g. mock-image-1)" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="proj-status"
+                                placeholder="Status Badge Text (e.g. Finished Product, Concept)" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="proj-link-text" placeholder="Link Text (e.g. Read Case Study ->)"
+                                required>
+                        </div>
+                        <button type="submit" class="btn btn-primary submit-btn">Add Project</button>
+                        <p id="proj-msg" style="text-align: center; margin-top: 1rem; display: none;"></p>
+                    </form>
+                </div>
+
+                <!-- Manage Projects -->
+                <div class="form-container">
+                    <h3>Manage Projects</h3>
+                    <ul id="projects-list" class="item-list">
+                        <!-- Projects will be loaded here -->
+                        <li>Loading projects...</li>
+                    </ul>
+                </div>
+
+                <!-- View Contacts -->
+                <div class="form-container" style="border-bottom: none;">
+                    <h3>Recent Contact Submissions</h3>
+                    <ul id="contacts-list" class="item-list">
+                        <!-- Contacts will be loaded here -->
+                        <li>Loading messages...</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="admin.js"></script>
+</body>
+
+</html>

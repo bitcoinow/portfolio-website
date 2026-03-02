@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Admin Account</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body
+    style="display: flex; justify-content: center; align-items: center; height: 100vh; background: var(--bg-color); color: var(--text-color);">
+    <div style="background: var(--card-bg); padding: 2rem; border-radius: 12px; max-width: 400px; text-align: center;">
+        <h2>Create Admin Account</h2>
+        <p style="margin-bottom: 1rem; color: #ef4444; font-size: 0.9rem;">WARNING: Delete this file (setup-admin.html)
+            immediately after creating your account to prevent others from registering!</p>
+        <form id="setup-form" class="contact-form">
+            <div class="input-group">
+                <input type="email" id="setup-email" placeholder="Admin Email" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="setup-password" placeholder="Admin Password (min 6 chars)" required
+                    minlength="6">
+            </div>
+            <button type="submit" class="btn btn-primary submit-btn">Create Account</button>
+            <p id="setup-msg" style="margin-top: 1rem;"></p>
+        </form>
+        <br>
+        <a href="admin.html" style="color: var(--primary-color);">Go to Admin Login</a>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            projectId: "portfolio-site-db",
+            appId: "1:1007349452987:web:531da8c895c69aca93599e",
+            storageBucket: "portfolio-site-db.firebasestorage.app",
+            apiKey: "AIzaSyCMCRFuxlDBTY7mYM5MORdZomqICNRBhEA",
+            authDomain: "portfolio-site-db.firebaseapp.com",
+            messagingSenderId: "1007349452987",
+            projectNumber: "1007349452987"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const form = document.getElementById('setup-form');
+        const msg = document.getElementById('setup-msg');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('.submit-btn');
+            btn.textContent = 'Creating...';
+
+            try {
+                const email = document.getElementById('setup-email').value;
+                const password = document.getElementById('setup-password').value;
+                await createUserWithEmailAndPassword(auth, email, password);
+
+                msg.textContent = 'Account successfully created! You can now log in to the Admin Panel. PLEASE DELETE THIS FILE NOW.';
+                msg.style.color = '#10b981';
+                form.reset();
+            } catch (error) {
+                msg.textContent = 'Error: ' + error.message;
+                msg.style.color = '#ef4444';
+            } finally {
+                btn.textContent = 'Create Account';
+            }
+        });
+    </script>
+</body>
+
+</html>
